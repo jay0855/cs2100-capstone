@@ -13,12 +13,105 @@
     </header>
 
     <main>
-        <section class="content-section">
-            <h2>Country Dashboard</h2>
-            <p>Check your browser's developer console to view fetched and modeled data.</p>
-            <div id="data-container" class="card-container">
-                <div class="card placeholder">Loading data from API...</div>
-            </div>
+        <section class="content-section" aria-labelledby="dashboard-heading">
+            <h2 id="dashboard-heading">Country Dashboard</h2>
+
+            <section class="controls-panel" aria-labelledby="controls-heading">
+                <h3 id="controls-heading">Filter &amp; Sort Controls</h3>
+
+                <div class="quick-filters">
+                    <div class="field-group">
+                        <label for="quick-search">Quick Search by Name</label>
+                        <input
+                            type="search"
+                            id="quick-search"
+                            name="quickSearch"
+                            placeholder="e.g., Japan, Brazil, Kenya"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="field-group">
+                        <label for="region-filter">Region</label>
+                        <select id="region-filter" name="region">
+                            <option value="all">All Regions</option>
+                            <option value="Africa">Africa</option>
+                            <option value="Americas">Americas</option>
+                            <option value="Antarctic">Antarctic</option>
+                            <option value="Asia">Asia</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Oceania">Oceania</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="sort-by">Sort By</label>
+                        <select id="sort-by" name="sortBy">
+                            <option value="population-desc">Population (High to Low)</option>
+                            <option value="population-asc">Population (Low to High)</option>
+                            <option value="name-asc">Name (A–Z)</option>
+                            <option value="name-desc">Name (Z–A)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <form id="custom-filter-form" class="validation-form" novalidate>
+                    <fieldset class="form-grid">
+                        <legend>Demographic Range &amp; Keyword Form</legend>
+
+                        <div class="field-group">
+                            <label for="form-country-name">Country Keyword (2–50 chars)</label>
+                            <input
+                                type="text"
+                                id="form-country-name"
+                                name="countryName"
+                                placeholder="Optional, e.g., United"
+                            >
+                            <span id="error-country-name" class="error-message" role="alert"></span>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="form-min-pop">Minimum Population</label>
+                            <input
+                                type="number"
+                                id="form-min-pop"
+                                name="minPopulation"
+                                min="0"
+                                step="1"
+                                placeholder="e.g., 1000000"
+                            >
+                            <span id="error-min-pop" class="error-message" role="alert"></span>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="form-max-pop">Maximum Population</label>
+                            <input
+                                type="number"
+                                id="form-max-pop"
+                                name="maxPopulation"
+                                min="0"
+                                step="1"
+                                placeholder="e.g., 500000000"
+                            >
+                            <span id="error-max-pop" class="error-message" role="alert"></span>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Apply Form Filters</button>
+                        <button type="button" id="reset-filters-btn" class="btn btn-secondary">Reset All</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="results-section" aria-labelledby="results-heading">
+                <div class="results-header">
+                    <h3 id="results-heading">Matching Countries</h3>
+                    <p id="results-count" class="results-count" aria-live="polite">Loading countries...</p>
+                </div>
+
+                <div id="data-container" class="card-container"></div>
+            </section>
         </section>
     </main>
 
