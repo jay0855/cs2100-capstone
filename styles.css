@@ -1,3 +1,16 @@
+:root {
+    --bg-page: #f1f5f9;
+    --bg-surface: #ffffff;
+    --bg-subtle: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --accent-primary: #1d4ed8;
+    --accent-primary-hover: #1e40af;
+    --border-color: #cbd5e1;
+    --error-text: #b91c1c;
+    --error-bg: #fef2f2;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
