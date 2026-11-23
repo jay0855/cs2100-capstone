@@ -1,10 +1,13 @@
 class Country {
-  constructor(rawObj) {
+  constructor(rawObj = {}) {
     this.name = rawObj.name?.common || "Unknown Country";
-    this.capital = rawObj.capital ? rawObj.capital[0] : "No Capital";
+    this.capital =
+       Array.isArray(rawObj.capital) && rawObj.capital.length > 0
+       ? rawObj.capital[0]
+         : "No Capital";
     this.region = rawObj.region || "Unspecified";
-    this.population = rawObj.population || 0;
-    this.flag = rawObj.flags?.svg || rawObj.flags?.png || "";
+    this.population = typeof rawObj.population === "number" ? rawObj.population : 0;
+    this.flagAlt = rawObj.flags?.alt || `Flag of ${this.name}`;
   }
 
   getSummary() {
